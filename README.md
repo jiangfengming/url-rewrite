@@ -1,10 +1,31 @@
 # url-rewrite
 A URL rewrite utility.
 
-## Usage
+## Import
+### webpack
+es5
+```js
+import urlRewrite from 'url-rewrite'
+```
+
+es6
+```js
+import urlRewrite from 'url-rewrite/es6'
+```
+
+### node.js
+es5
 ```js
 const urlRewrite = require('url-rewrite')
+```
 
+es6
+```js
+const urlRewrite = require('url-rewrite/es6')
+```
+
+## Usage
+```js
 const rules = [
   ['https://www.example.com/foo/', 'https://example.com/bar/'],
   [/^https:\/\/www\.example\.com\/(.*\.png)$/, 'https://assets.example.com/$1?a=1', ['v'], false]

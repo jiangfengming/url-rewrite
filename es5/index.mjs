@@ -1,4 +1,4 @@
-function index (url, rules) {
+function urlRewrite(url, rules) {
   url = new URL(url);
   var path = url.origin + url.pathname;
 
@@ -64,4 +64,4 @@ function index (url, rules) {
   return url.href;
 }
 
-export default index;
+export default urlRewrite;

@@ -1,5 +1,5 @@
 const assert = require('assert')
-const urlRewrite = require('.')
+const urlRewrite = require('./es6')
 
 const rules = [
   ['https://www.example.com/foo/', 'https://example.com/bar/'],

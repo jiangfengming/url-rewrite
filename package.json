@@ -2,9 +2,9 @@
   "name": "url-rewrite",
   "version": "0.0.0",
   "description": "A URL rewrite utility.",
-  "main": "dist/urlRewrite",
+  "main": "es5",
   "scripts": {
-    "build": "rollup -c rollup.config.esm.mjs && rollup -c rollup.config.umd.mjs",
+    "build": "rollup -c rollup.config.es5.cjs.mjs && rollup -c rollup.config.es5.esm.mjs && rollup -c rollup.config.es6.cjs.mjs && rollup -c rollup.config.es6.esm.mjs",
     "test": "node test"
   },
   "repository": {
