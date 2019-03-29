@@ -49,10 +49,10 @@ urlRewrite(url, rules, returnObject)
 ### Paramaters
 
 #### url
-The original URL
+`String` | [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL). The original URL.
 
 #### rules
-Rewrite rules.
+`Array`. Rewrite rules.
 
 ```js
 [
@@ -62,6 +62,8 @@ Rewrite rules.
 ```
 
 ##### regexp, replacement
+Same parameters as `String.replace(regexp, replacement)`.
+
 The underlying replace formula is:
 ```js
 const url = new URL(url)
@@ -69,15 +71,16 @@ const newURL = (url.origin + url.pathname).replace(regexp, replacement)
 ```
 
 ##### query
-Whether to keep the query string. Defaults to `true`.
+`Boolean` | `Array`. Whether to keep the query string. Defaults to `true`.
 You can use array to specify which query params to keep. e.g., `['id', 'key']`
 
 ##### hash
-Whether to keep hash. Defaults to `true`.
+`Boolean`. Whether to keep hash. Defaults to `true`.
 
 #### returnObject
-If set to `true`, return the [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) object.
+`Boolean`. If set to `true`, return the [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) object.
 
 ### Returns
+`String` | [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) | `null`.
 The rewrited URL. Or the original URL if no rule matched.
 If the rewrited URL is an empty string, `null` is returned.
