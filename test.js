@@ -8,3 +8,4 @@ const rules = [
 
 assert.equal(urlRewrite('https://www.example.com/foo/a?q=1', rules), 'https://example.com/bar/a?q=1')
 assert.equal(urlRewrite('https://www.example.com/a/b.png?v=2&c=3#h', rules), 'https://assets.example.com/a/b.png?a=1&v=2')
+assert.equal(urlRewrite('https://www.example.com/foo/a?q=1', rules, true).constructor, URL)

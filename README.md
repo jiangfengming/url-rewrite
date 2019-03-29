@@ -43,7 +43,7 @@ urlRewrite('https://www.example.com/a/b.png?v=2&c=3#h', rules)
 Rewrite the url according to the rules.
 
 ```js
-urlRewrite(url, rules)
+urlRewrite(url, rules, returnObject)
 ```
 
 ### Paramaters
@@ -75,5 +75,9 @@ You can use array to specify which query params to keep. e.g., `['id', 'key']`
 ##### hash
 Whether to keep hash. Defaults to `true`.
 
+#### returnObject
+If set to `true`, return the [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) object.
+
 ### Returns
 The rewrited URL. Or the original URL if no rule matched.
+If the rewrited URL is an empty string, `null` is returned.

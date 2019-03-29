@@ -1,7 +1,10 @@
 'use strict';
 
-function urlRewrite(url, rules) {
-  url = new URL(url);
+function urlRewrite(url, rules, returnObject) {
+  if (url.constructor !== URL) {
+    url = new URL(url);
+  }
+
   var path = url.origin + url.pathname;
 
   for (var _iterator = rules, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
@@ -26,7 +29,7 @@ function urlRewrite(url, rules) {
     var url2 = path.replace(regexp, replacement);
 
     if (!url2) {
-      return '';
+      return null;
     }
 
     if (url2 !== path) {
@@ -59,11 +62,11 @@ function urlRewrite(url, rules) {
         url2.hash = url.hash;
       }
 
-      return url2.href;
+      return returnObject ? url2 : url2.href;
     }
   }
 
-  return url.href;
+  return returnObject ? url : url.href;
 }
 
 module.exports = urlRewrite;
