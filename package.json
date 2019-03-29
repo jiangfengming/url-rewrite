@@ -1,0 +1,51 @@
+{
+  "name": "url-rewrite",
+  "version": "0.0.0",
+  "description": "A URL rewrite utility.",
+  "main": "dist/urlRewrite",
+  "scripts": {
+    "build": "rollup -c rollup.config.esm.mjs && rollup -c rollup.config.umd.mjs",
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasha-io/url-rewrite.git"
+  },
+  "keywords": [
+    "url",
+    "rewrite"
+  ],
+  "author": "Jiang Fengming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kasha-io/url-rewrite/issues"
+  },
+  "homepage": "https://github.com/kasha-io/url-rewrite#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
+    "eslint-config-enough": "^0.3.4",
+    "rollup": "^1.7.4",
+    "rollup-plugin-babel": "^4.3.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "loose": true,
+          "modules": false
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "enough",
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  }
+}
