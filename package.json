@@ -1,6 +1,6 @@
 {
   "name": "url-rewrite",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A URL rewrite utility.",
   "main": "dist",
   "scripts": {
