@@ -20,17 +20,9 @@ class Rewriter {
 
     const matched = this._router.find(url)
 
-    if (matched) {
-      if (!matched.handler) {
-        return ''
-      } else if (/:\w/.test(matched.handler)) {
-        return matched.handler.replace(/:(\w+)/g, (_, param) => matched.params[param] || '') + preserve
-      } else {
-        return matched.handler + preserve
-      }
-    } else {
-      return url + preserve
-    }
+    return matched
+      ? matched.handler && matched.handler.replace(/:(\w+)/g, (_, param) => matched.params[param] || '') + preserve
+      : url + preserve
   }
 }
 
