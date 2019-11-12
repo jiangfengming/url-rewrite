@@ -1,8 +1,10 @@
 export default {
   input: 'src/index.mjs',
+
   output: {
     format: 'cjs',
-    name: 'urlRewrite',
-    file: 'es6/index.js'
-  }
+    file: 'dist/index.js'
+  },
+
+  external: ['url-router']
 }

@@ -1,35 +1,37 @@
-export default function urlRewrite(url, rules, returnObject) {
-  if (url.constructor !== URL) {
-    url = new URL(url)
+import Router from 'url-router'
+
+class Rewriter {
+  constructor(...rules) {
+    this._router = new Router(...rules)
   }
 
-  const path = url.origin + url.pathname
-
-  for (const [regexp, replacement, query = true, hash = true] of rules) {
-    let url2 = path.replace(regexp, replacement)
-
-    if (!url2) {
-      return null
-    }
-
-    if (url2 !== path) {
-      url2 = new URL(url2)
-
-      if (query) {
-        for (const [k, v] of url.searchParams) {
-          if (query === true || query.includes(k)) {
-            url2.searchParams.append(k, v)
-          }
-        }
-      }
-
-      if (hash) {
-        url2.hash = url.hash
-      }
-
-      return returnObject ? url2 : url2.href
-    }
+  add(from, to) {
+    this._router.add(from, to)
   }
 
-  return returnObject ? url : url.href
+  do(url) {
+    let preserve = ''
+    const delimiter = url.match(/\?|#/)
+
+    if (delimiter) {
+      preserve = url.slice(delimiter.index)
+      url = url.slice(0, delimiter.index)
+    }
+
+    const matched = this._router.find(url)
+
+    if (matched) {
+      if (!matched.handler) {
+        return ''
+      } else if (/:\w/.test(matched.handler)) {
+        return matched.handler.replace(/:(\w+)/g, (_, param) => matched.params[param] || '') + preserve
+      } else {
+        return matched.handler + preserve
+      }
+    } else {
+      return url + preserve
+    }
+  }
 }
+
+export default Rewriter
