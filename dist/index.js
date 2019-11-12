@@ -4,16 +4,8 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var Router = _interopDefault(require('url-router'));
 
-class Rewriter {
-  constructor(...rules) {
-    this._router = new Router(...rules);
-  }
-
-  add(from, to) {
-    this._router.add(from, to);
-  }
-
-  do(url) {
+class index extends Router {
+  from(url) {
     let preserve = '';
     const delimiter = url.match(/\?|#/);
 
@@ -22,7 +14,7 @@ class Rewriter {
       url = url.slice(0, delimiter.index);
     }
 
-    const matched = this._router.find(url);
+    const matched = this.find(url);
 
     return matched
       ? matched.handler && matched.handler.replace(/:(\w+)/g, (_, param) => matched.params[param] || '') + preserve
@@ -30,4 +22,4 @@ class Rewriter {
   }
 }
 
-module.exports = Rewriter;
+module.exports = index;

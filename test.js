@@ -9,16 +9,16 @@ const rewriter = new Rewriter(
 rewriter.add('https://ads.example.com/(.*)', '')
 
 assert.strictEqual(
-  rewriter.do('https://www.example.com/foo?a=1'),
+  rewriter.from('https://www.example.com/foo?a=1'),
   'https://example.com/bar?a=1'
 )
 
 assert.strictEqual(
-  rewriter.do('https://www.example.com/images/a/b.png?v=2&c=3#h'),
+  rewriter.from('https://www.example.com/images/a/b.png?v=2&c=3#h'),
   'https://images.example.com/a/b.png?v=2&c=3#h'
 )
 
 assert.strictEqual(
-  rewriter.do('https://ads.example.com/foo/bar'),
+  rewriter.from('https://ads.example.com/foo/bar'),
   ''
 )

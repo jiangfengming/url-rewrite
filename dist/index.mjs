@@ -1,62 +1,23 @@
 import Router from 'url-router';
 
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
 }
 
-function isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _construct(Parent, args, Class) {
-  if (isNativeReflectConstruct()) {
-    _construct = Reflect.construct;
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-
-  return _construct.apply(null, arguments);
-}
-
-var Rewriter =
+var _default =
 /*#__PURE__*/
-function () {
-  function Rewriter() {
-    for (var _len = arguments.length, rules = new Array(_len), _key = 0; _key < _len; _key++) {
-      rules[_key] = arguments[_key];
-    }
+function (_Router) {
+  _inheritsLoose(_default, _Router);
 
-    this._router = _construct(Router, rules);
+  function _default() {
+    return _Router.apply(this, arguments) || this;
   }
 
-  var _proto = Rewriter.prototype;
+  var _proto = _default.prototype;
 
-  _proto.add = function add(from, to) {
-    this._router.add(from, to);
-  };
-
-  _proto["do"] = function _do(url) {
+  _proto.from = function from(url) {
     var preserve = '';
     var delimiter = url.match(/\?|#/);
 
@@ -65,14 +26,13 @@ function () {
       url = url.slice(0, delimiter.index);
     }
 
-    var matched = this._router.find(url);
-
+    var matched = this.find(url);
     return matched ? matched.handler && matched.handler.replace(/:(\w+)/g, function (_, param) {
       return matched.params[param] || '';
     }) + preserve : url + preserve;
   };
 
-  return Rewriter;
-}();
+  return _default;
+}(Router);
 
-export default Rewriter;
+export default _default;
