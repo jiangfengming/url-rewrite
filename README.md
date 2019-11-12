@@ -9,7 +9,7 @@ npm install url-rewrite
 ## Usage
 ```js
 const assert = require('assert')
-const Rewriter = require('url-rewriter')
+const Rewriter = require('url-rewrite')
 
 const rewriter = new Rewriter(
   ['https://www.example.com/foo', 'https://example.com/bar'],
