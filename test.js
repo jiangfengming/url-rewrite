@@ -1,10 +1,10 @@
 const assert = require('assert')
 const Rewriter = require('.')
 
-const rewriter = new Rewriter(
+const rewriter = new Rewriter([
   ['https://www.example.com/foo', 'https://example.com/bar'],
   ['https://www.example.com/images/:file(.*)', 'https://images.example.com/:file']
-)
+])
 
 rewriter.add('https://ads.example.com/(.*)', '')
 
