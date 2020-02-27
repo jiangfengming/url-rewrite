@@ -6,9 +6,7 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 
-var _default =
-/*#__PURE__*/
-function (_Router) {
+var _default = /*#__PURE__*/function (_Router) {
   _inheritsLoose(_default, _Router);
 
   function _default() {
