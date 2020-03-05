@@ -34,5 +34,8 @@ assert.strictEqual(
 )
 ```
 
+Pattern syntax see [url-router#pattern](https://github.com/jiangfengming/url-router#pattern)
+
+
 ## License
 [MIT](LICENSE)
